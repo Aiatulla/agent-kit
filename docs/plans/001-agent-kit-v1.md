@@ -62,7 +62,7 @@ Rejected alternatives:
   Checked 2026-09-29 with `npm view` and the PyPI JSON API: Next.js 16.3.7, React 19.3.0, FastAPI 0.141.1, SQLAlchemy 2.1.1, Pydantic 2.13.5; tooling: ESLint 10.11.0, TypeScript 7.0.2, Alembic 1.20.0, ruff 0.16.9, mypy 2.3.1, pytest 9.1.1.
 - [x] 7b. `stacks/nextjs/*` and `stacks/fastapi/*` per contract; delete `_migrate/`. (KIT-5, KIT-6)
 - [x] 8. `bin/kit sync|doctor|version` + `tests/sync/`. (KIT-10, KIT-11, KIT-13)
-- [ ] 9. `scripts/verify.sh`, CI workflow, README. (KIT-8, KIT-12, KIT-13, KIT-14)
+- [x] 9. `scripts/verify.sh`, CI workflow, README. (KIT-8, KIT-12, KIT-13, KIT-14)
 - [ ] 10. `scripts/verify.sh full` green; KIT evidence table; unrelated issues list; STOP for merge, tag, real install.
 
 After each step from 3 on: `scripts/verify.sh fast` once it exists, tick the box, commit.
