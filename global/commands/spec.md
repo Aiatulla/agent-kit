@@ -8,7 +8,8 @@ Point out edge cases and failure modes I haven't mentioned.
 Then write docs/specs/<next-number>-<slug>.md:
 ## Goal            (1-3 sentences, the problem, not the solution)
 ## Non-goals       (what we are explicitly NOT doing)
-## Acceptance criteria  (observable behavior: "given X, when Y, then Z")
+## Acceptance criteria  (observable behavior: "given X, when Y, then Z"; each gets an ID
+                        `<PREFIX>-<n>`, e.g. `PAY-7`, unique and never reused)
 ## Constraints     (stack, performance, security, compatibility)
 ## Open questions
 ## Customer summary   (plain language, no technical terms, send this to the customer)
