@@ -54,7 +54,7 @@ Rejected alternatives:
 - [x] 3c. Repo `AGENTS.md` (max 60 lines) + `CLAUDE.md` symlink; `VERSION` = 1.0.0. (KIT-4, KIT-5)
 - [x] 4a. `global/AGENTS.md` with contradiction resolutions and integrity rules, max 150 lines. (KIT-6, KIT-7, KIT-8)
 - [x] 4b. Reviewer merged, one output format, plan conformance. Commands edited (plan inventory, implement verify, spec IDs). STOP. (KIT-6, KIT-7)
-- [ ] 5. Hooks + `tests/hooks/`. (KIT-9, KIT-13)
+- [x] 5. Hooks + `tests/hooks/`. (KIT-9, KIT-13)
 - [ ] 6a. `bin/lib.sh` + `adapters/claude.sh` + `adapters/gemini.sh`. (KIT-2, KIT-4)
 - [ ] 6b. `install.sh` with `--dry-run`, `--uninstall`, backups, settings merge, `~/.local/bin/kit`. (KIT-2, KIT-3)
 - [ ] 6c. `tests/install/`. (KIT-3, KIT-12, KIT-13)
