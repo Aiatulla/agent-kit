@@ -1,5 +1,5 @@
-Read the spec at $ARGUMENTS. Explore the codebase read-only. Read docs/COMPONENTS.md
-and docs/ARCHITECTURE.md. Do NOT implement anything.
+Read the spec at $ARGUMENTS. Explore the codebase read-only. Read the inventory files listed in
+the project's AGENTS.md and docs/ARCHITECTURE.md. Do NOT implement anything.
 
 Write docs/plans/<same-name-as-spec>.md:
 ## Approach        (and 1-2 alternatives you rejected, with why)
