@@ -1,0 +1,32 @@
+# agent-kit preset for the fastapi stack. Extend it from the project's ruff config:
+#   extend = ".agent-kit/stacks/fastapi/lint/ruff.toml"   (path relative to that config file)
+line-length = 100
+
+[lint]
+select = [
+  "E", "W", "F",   # pycodestyle, pyflakes
+  "I",             # import order
+  "UP",            # modern syntax for the target Python version
+  "B",             # bugbear, including B006 mutable default arguments
+  "ANN",           # type hints on every function signature
+  "BLE",           # blind except Exception
+  "E722",          # bare except
+  "S",             # security, including hardcoded passwords and secrets
+  "TID252",        # relative imports from parent modules
+  "C90",           # complexity
+  "PLR2004",       # magic values in comparisons
+  "ASYNC",         # blocking calls in async functions
+]
+# FastAPI's Depends() in defaults is the intended pattern.
+extend-ignore = ["B008"]
+
+[lint.mccabe]
+max-complexity = 8
+
+[lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[lint.per-file-ignores]
+"**/tests/**" = ["S101", "ANN", "PLR2004"]
+"**/test_*.py" = ["S101", "ANN", "PLR2004"]
+"**/alembic/versions/*.py" = ["ANN", "E501"]
