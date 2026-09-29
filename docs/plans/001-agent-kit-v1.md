@@ -47,7 +47,7 @@ Rejected alternatives:
 ## Steps
 
 - [x] 0. Preflight: clean status, prompt excluded, remote set to `agent-kit`, tag `legacy-orchestrator` created locally (not pushed), branch `restructure/agent-kit-v1`, all files read. (KIT-1)
-- [ ] 1. Spec + plan committed; STOP for approval. (all)
+- [x] 1. Spec + plan committed; STOP for approval. (all)
 - [ ] 2. Starter repo: clone, copy scaffolding, commit; STOP; push after approval; `git rm` scaffolding here. (KIT-1)
 - [ ] 3a. `git mv` skills, vendor skills, lock file, commands, reviewer, spawn.sh; legacy sources to `_migrate/`. (KIT-1, KIT-6)
 - [ ] 3b. Cleanup: `.DS_Store`, `.gitignore`, `dry-kiss-rules` path + duplicate. (KIT-6, KIT-12)
