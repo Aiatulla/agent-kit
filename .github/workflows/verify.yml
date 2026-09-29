@@ -1,0 +1,27 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq and shellcheck
+        run: |
+          if [ "$RUNNER_OS" = macOS ]; then
+            brew install jq shellcheck
+          else
+            sudo apt-get update && sudo apt-get install -y jq shellcheck
+          fi
+      - name: Show bash version
+        run: /bin/bash --version | head -n 1
+      # /bin/bash is bash 3.2 on macOS, which proves the scripts stay 3.2 compatible.
+      - name: scripts/verify.sh full
+        run: /bin/bash scripts/verify.sh full
