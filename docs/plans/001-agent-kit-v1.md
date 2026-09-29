@@ -51,7 +51,7 @@ Rejected alternatives:
 - [x] 2. Starter repo: clone, copy scaffolding, commit; STOP; push after approval; `git rm` scaffolding here. (KIT-1)
 - [x] 3a. `git mv` skills, vendor skills, lock file, commands, reviewer, spawn.sh; legacy sources to `_migrate/`. (KIT-1, KIT-6)
 - [x] 3b. Cleanup: `.DS_Store`, `.gitignore`, `dry-kiss-rules` path + duplicate. (KIT-6, KIT-12)
-- [ ] 3c. Repo `AGENTS.md` (max 60 lines) + `CLAUDE.md` symlink; `VERSION` = 1.0.0. (KIT-4, KIT-5)
+- [x] 3c. Repo `AGENTS.md` (max 60 lines) + `CLAUDE.md` symlink; `VERSION` = 1.0.0. (KIT-4, KIT-5)
 - [ ] 4a. `global/AGENTS.md` with contradiction resolutions and integrity rules, max 150 lines. (KIT-6, KIT-7, KIT-8)
 - [ ] 4b. Reviewer merged, one output format, plan conformance. Commands edited (plan inventory, implement verify, spec IDs). STOP. (KIT-6, KIT-7)
 - [ ] 5. Hooks + `tests/hooks/`. (KIT-9, KIT-13)
