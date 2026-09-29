@@ -40,10 +40,10 @@ Before adding a rule, grep `global/` and `stacks/` for it and edit the existing 
 ## Safety
 
 - Test installs only with a temporary `HOME`; never against your real `~/.claude` or `~/.gemini`.
-- No secrets and no absolute user paths anywhere in the repo.
+- No absolute user paths anywhere in the repo.
 
 ## Workflow
 
 Specs live in `docs/specs/`, plans in `docs/plans/`.
-One logical change per commit, Conventional Commits, `git mv` for moves.
+Use `git mv` for moves so file history is kept.
 Bump `VERSION` (semver) when the installed or synced output changes.
