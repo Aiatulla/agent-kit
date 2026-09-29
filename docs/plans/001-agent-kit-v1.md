@@ -58,7 +58,8 @@ Rejected alternatives:
 - [x] 6a. `bin/lib.sh` + `adapters/claude.sh` + `adapters/gemini.sh`. (KIT-2, KIT-4)
 - [x] 6b. `install.sh` with `--dry-run`, `--uninstall`, backups, settings merge, `~/.local/bin/kit`. (KIT-2, KIT-3)
 - [ ] 6c. `tests/install/`. (KIT-3, KIT-12, KIT-13)
-- [ ] 7a. Check current stable versions of Next.js, React, FastAPI, SQLAlchemy, Pydantic; record here. (KIT-5)
+- [x] 7a. Check current stable versions of Next.js, React, FastAPI, SQLAlchemy, Pydantic; record here. (KIT-5)
+  Checked 2026-09-29 with `npm view` and the PyPI JSON API: Next.js 16.3.7, React 19.3.0, FastAPI 0.141.1, SQLAlchemy 2.1.1, Pydantic 2.13.5; tooling: ESLint 10.11.0, TypeScript 7.0.2, Alembic 1.20.0, ruff 0.16.9, mypy 2.3.1, pytest 9.1.1.
 - [ ] 7b. `stacks/nextjs/*` and `stacks/fastapi/*` per contract; delete `_migrate/`. (KIT-5, KIT-6)
 - [ ] 8. `bin/kit sync|doctor|version` + `tests/sync/`. (KIT-10, KIT-11, KIT-13)
 - [ ] 9. `scripts/verify.sh`, CI workflow, README. (KIT-8, KIT-12, KIT-13, KIT-14)
