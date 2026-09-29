@@ -55,7 +55,7 @@ claude_uninstall_global() {
   unlink_all_kit "$CLAUDE_HOME/agents"
   unlink_all_kit "$CLAUDE_HOME/skills"
   json_edit "$CLAUDE_HOME/settings.json" "$_CLAUDE_STRIP" --arg mark "$CLAUDE_HOOKS_MARK"
-  remove_empty_dirs "$CLAUDE_HOME/rules" "$CLAUDE_HOME/commands" "$CLAUDE_HOME/agents" "$CLAUDE_HOME/skills"
+  remove_empty_dirs "$CLAUDE_HOME/rules" "$CLAUDE_HOME/commands" "$CLAUDE_HOME/agents" "$CLAUDE_HOME/skills" "$CLAUDE_HOME"
 }
 
 # claude_sync_project <dir>: CLAUDE.md -> AGENTS.md next to every AGENTS.md the kit manages

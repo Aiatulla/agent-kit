@@ -98,6 +98,7 @@ remove_generated_in() {
 }
 
 # remove_empty_dirs <dir...>: after uninstall, drop directories the install left empty.
+# An empty directory holds no user data, so removing one the user had is harmless.
 remove_empty_dirs() {
   [ "$DRY_RUN" = 1 ] && return 0
   local d

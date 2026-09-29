@@ -48,7 +48,7 @@ gemini_uninstall_global() {
   unlink_kit "$GEMINI_HOME/GEMINI.md"
   unlink_all_kit "$GEMINI_HOME/skills"
   remove_generated_in "$GEMINI_HOME/commands" '*.toml'
-  remove_empty_dirs "$GEMINI_HOME/commands" "$GEMINI_HOME/skills"
+  remove_empty_dirs "$GEMINI_HOME/commands" "$GEMINI_HOME/skills" "$GEMINI_HOME"
 }
 
 # gemini_sync_project <dir>: make Gemini load AGENTS.md files as context.
