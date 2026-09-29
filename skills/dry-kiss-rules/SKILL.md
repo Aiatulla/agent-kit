@@ -36,7 +36,7 @@ Generates a universal `.agents/rules/CODE_RULES.md` file that any AI coding agen
 
 ## What to Generate
 
-Read `/home/claude/dry-kiss-rules/references/CODE_RULES_TEMPLATE.md` and use it as the base. Customize for the user's specific project if they provide details (stack versions, additional conventions, folder structure).
+Read `references/CODE_RULES_TEMPLATE.md` (relative to this skill folder) and use it as the base. Customize for the user's specific project if they provide details (stack versions, additional conventions, folder structure).
 
 ## Generation Steps
 
