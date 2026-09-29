@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # bin/lib.sh: helpers shared by install.sh, bin/kit, and adapters/*.sh.
 # Sourced, never executed. Callers set KIT_DIR before sourcing.
 # Every change to HOME goes through these functions so that --dry-run,

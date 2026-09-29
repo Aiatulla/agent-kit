@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # tests/lib.sh: helpers for tests/install and tests/sync. Sourced by each test.
 # Every test runs against a throwaway HOME and never touches the real one.
 set -u

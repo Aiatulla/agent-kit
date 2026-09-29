@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # KIT-4: a new tool is one file in adapters/, picked up with no other change.
+# shellcheck disable=SC2034 # variables are read inside the eval strings passed to check
 . "$(dirname "$0")/../lib.sh"
 
 copy=$TMP/kit

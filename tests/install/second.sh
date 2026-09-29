@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # KIT-3: a second install changes nothing and does not duplicate hooks.
+# shellcheck disable=SC2034 # variables are read inside the eval strings passed to check
 . "$(dirname "$0")/../lib.sh"
 
 run_install >/dev/null 2>&1

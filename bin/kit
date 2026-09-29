@@ -13,6 +13,7 @@ while [ -L "$src" ]; do
 done
 KIT_DIR=$(cd "$(dirname "$src")/.." && pwd)
 . "$KIT_DIR/bin/lib.sh"
+# shellcheck source=/dev/null
 for adapter in "$KIT_DIR"/adapters/*.sh; do . "$adapter"; done
 
 kit_commit() { git -C "$KIT_DIR" rev-parse --short HEAD 2>/dev/null || echo unknown; }

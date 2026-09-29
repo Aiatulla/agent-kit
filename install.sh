@@ -23,6 +23,7 @@ done
 found=0
 for adapter in "$KIT_DIR"/adapters/*.sh; do
   tool=$(basename "$adapter" .sh)
+  # shellcheck source=/dev/null
   . "$adapter"
   if ! "${tool}_detect"; then
     say "$tool: not detected, skipped"

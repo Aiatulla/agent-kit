@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # KIT-3: an existing settings.json keeps its other keys and hooks through install and uninstall.
+# shellcheck disable=SC2034 # variables are read inside the eval strings passed to check
 . "$(dirname "$0")/../lib.sh"
 
 mkdir -p "$HOME/.claude"

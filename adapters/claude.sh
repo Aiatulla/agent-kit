@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # adapters/claude.sh: Claude Code adapter. Sourced by install.sh and bin/kit.
 # Conventions (confirmed in docs/plans/001-agent-kit-v1.md, "Tool conventions confirmed"):
 # user rules in ~/.claude/rules/*.md, commands, agents, skills, hooks in settings.json.

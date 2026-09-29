@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # KIT-10: kit sync on a fake monorepo with frontend/ and backend/.
+# shellcheck disable=SC2034 # variables are read inside the eval strings passed to check
 . "$(dirname "$0")/../lib.sh"
 
 kit() { "$BASH" "$KIT/bin/kit" "$@"; }

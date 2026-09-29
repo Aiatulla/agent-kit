@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # KIT-11: kit doctor reports broken links, missing dependencies, version drift, missing blocks.
+# shellcheck disable=SC2034 # variables are read inside the eval strings passed to check
 . "$(dirname "$0")/../lib.sh"
 
 kit() { "$BASH" "$KIT/bin/kit" "$@"; }

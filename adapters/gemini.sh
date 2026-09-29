@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # adapters/gemini.sh: Gemini CLI adapter. Sourced by install.sh and bin/kit.
 # Conventions (confirmed in docs/plans/001-agent-kit-v1.md, "Tool conventions confirmed"):
 # ~/.gemini/GEMINI.md, ~/.gemini/commands/<name>.toml with {{args}}, ~/.gemini/skills/<name>/,

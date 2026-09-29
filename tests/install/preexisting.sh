@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # KIT-3: existing files are backed up before being replaced; the user's other files are untouched.
+# shellcheck disable=SC2034 # variables are read inside the eval strings passed to check
 . "$(dirname "$0")/../lib.sh"
 
 mkdir -p "$HOME/.claude/commands" "$HOME/.claude/skills/commiter" "$HOME/.gemini"
