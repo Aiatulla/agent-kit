@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# kit <command>: agent-kit CLI.
+#   kit version   print the kit version
+set -eu
+
+# Resolve the real location through the ~/.local/bin/kit symlink (no readlink -f on older macOS).
+src=$0
+while [ -L "$src" ]; do
+  target=$(readlink "$src")
+  case "$target" in
+    /*) src=$target ;;
+    *) src=$(dirname "$src")/$target ;;
+  esac
+done
+KIT_DIR=$(cd "$(dirname "$src")/.." && pwd)
+. "$KIT_DIR/bin/lib.sh"
+
+case "${1:-}" in
+  version) say "agent-kit $KIT_VERSION ($(git -C "$KIT_DIR" rev-parse --short HEAD 2>/dev/null || echo unknown))" ;;
+  *) sed -n '2,/^set/p' "$src" | sed '$d' | sed 's/^# \{0,1\}//'; exit 1 ;;
+esac
