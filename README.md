@@ -50,10 +50,10 @@ flowchart LR
 3. **Implement: one small step at a time.**
    `/implement docs/plans/NNN-name.md` does one step, runs the checks, ticks the box, and commits.
    If the plan turns out to be wrong, the agent stops and asks instead of improvising.
-4. **Guardrails: run automatically while the agent works.**
-   Edits to tests, snapshots, and fixtures are blocked, so the agent has to fix the code, not the test.
+4. **Guardrails: run automatically while the agent works** (Claude Code, in projects set up with `kit sync`).
+   The agent's file-edit tools cannot change tests, snapshots, or fixtures (unless you set `ALLOW_TEST_EDITS=1`), so it has to fix the code, not the test.
    `scripts/verify.sh` runs after every edit and again before the agent may finish.
-   After 3 failed checks in a row, the agent must stop and explain instead of trying forever.
+   After the same check fails 3 times in a session, the hook tells the agent to stop and report instead of trying again.
 5. **Review: a second agent checks the work.**
    The `reviewer` agent did not write the code and assumes it has bugs.
    It checks the diff against the spec and plan: every requirement built and tested, nothing extra added, nothing duplicated, no weakened checks, no security gaps.
@@ -61,20 +61,21 @@ flowchart LR
 6. **Lesson: learn from mistakes.**
    When something goes wrong, `/lesson` records what happened and why, and proposes the smallest mechanical fix (a lint rule, a test, a hook) so it cannot happen again.
 
-The same rules, commands, and checks apply on every machine and in every tool, so switching between Claude Code and Gemini CLI changes nothing about how the work gets done.
+Rules, commands, and skills are shared by Claude Code and Gemini CLI on every machine.
+The guardrail hooks and the reviewer agent are Claude Code only for now; in Gemini CLI, the pre-commit hook from `kit sync` still runs `scripts/verify.sh fast` on every commit.
 
 ## How it differs
 
-Most agent kits are frameworks for building new agents.
-agent-kit is not: it configures the AI coding agents you already use, and keeps them honest.
+agent-kit is not a framework for building new agents.
+It configures the AI coding agents you already use, and keeps them honest.
 
 - **Tool-agnostic**: one source of rules, commands, and skills for Claude Code and Gemini CLI; a new tool is one adapter file.
-- **Guardrails that run, not just prompts**: hooks block edits to tests, snapshots, and fixtures, run `scripts/verify.sh` after edits and before the agent stops, and enforce a stop rule after 3 failed checks.
+- **Guardrails that run, not just prompts** (Claude Code): hooks block file-tool edits to tests, snapshots, and fixtures, run `scripts/verify.sh` after edits and before the agent stops, and tell the agent to stop after 3 failed checks.
 - **Stack-aware**: per-directory stacks (`nextjs`, `fastapi`) bring their own rules, lint presets, and checks, so a monorepo gets the right rules in each folder.
 - **Spec-driven workflow**: `/spec`, `/plan`, `/implement`, and `/lesson` commands plus a reviewer agent that checks each diff against its spec and plan.
-- **Safe and reversible install**: symlinks into the clone, backups before anything is replaced, merged `settings.json`, idempotent reruns, and a clean `--uninstall`.
-- **Committed output**: `kit sync` writes plain files into the project, so teammates and CI need nothing installed.
-- **No runtime**: bash, git, and jq only; no Node, Python, or package manager.
+- **Safe and reversible install**: symlinks (or generated files) into the clone, backups before anything is replaced, merged `settings.json`, idempotent reruns, and a clean `--uninstall`.
+- **Committed output**: `kit sync` writes plain files into the project, so CI needs nothing installed.
+- **No runtime**: the kit itself needs only bash, git, and jq; no Node, Python, or package manager.
 
 ## Install
 
@@ -112,7 +113,7 @@ Create `.agent-kit.json` at the project root, mapping each directory to its stac
 
 Then run `kit sync` in the project.
 It copies the stacks into `.agent-kit/stacks/`, writes each stack's rules into that directory's `AGENTS.md` between `agent-kit` markers (your own content outside the markers is kept), writes `docs/inventory/<stack>.md`, generates `scripts/verify.sh`, installs a pre-commit hook that runs `scripts/verify.sh fast`, and records the kit version.
-Commit the result: teammates and CI need nothing else installed.
+Commit the result: CI needs nothing else installed, and teammates run `kit sync` to get the pre-commit hook (and `install.sh` for the agent guardrails).
 It prints the one line to add to your ESLint or Ruff config to extend the stack's preset.
 
 The file `.agent-kit.json` also turns on the global hooks for that project:
