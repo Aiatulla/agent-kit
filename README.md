@@ -37,7 +37,7 @@ flowchart LR
     C --> D["reviewer<br/>checks the diff"]
     D -->|pass| E["merge"]
     D -->|fail| C
-    C -.->|something went wrong| F["/lesson<br/>fix the cause"]
+    C -.->|something went wrong| F["/lesson<br/>propose a fix"]
 ```
 
 1. **Spec: agree on what to build.**
@@ -52,7 +52,7 @@ flowchart LR
    If the plan turns out to be wrong, the agent stops and asks instead of improvising.
 4. **Guardrails: run automatically while the agent works** (Claude Code, in projects set up with `kit sync`).
    The agent's file-edit tools cannot change tests, snapshots, or fixtures (unless you set `ALLOW_TEST_EDITS=1`), so it has to fix the code, not the test.
-   `scripts/verify.sh` runs after every edit and again before the agent may finish.
+   `scripts/verify.sh` runs after every file edit and again before the agent may finish.
    After the same check fails 3 times in a session, the hook tells the agent to stop and report instead of trying again.
 5. **Review: a second agent checks the work.**
    The `reviewer` agent did not write the code and assumes it has bugs.
@@ -73,9 +73,9 @@ It configures the AI coding agents you already use, and keeps them honest.
 - **Guardrails that run, not just prompts** (Claude Code): hooks block file-tool edits to tests, snapshots, and fixtures, run `scripts/verify.sh` after edits and before the agent stops, and tell the agent to stop after 3 failed checks.
 - **Stack-aware**: per-directory stacks (`nextjs`, `fastapi`) bring their own rules, lint presets, and checks, so a monorepo gets the right rules in each folder.
 - **Spec-driven workflow**: `/spec`, `/plan`, `/implement`, and `/lesson` commands plus a reviewer agent that checks each diff against its spec and plan.
-- **Safe and reversible install**: symlinks (or generated files) into the clone, backups before anything is replaced, merged `settings.json`, idempotent reruns, and a clean `--uninstall`.
+- **Safe and reversible install**: symlinks into the clone (Gemini commands are generated files), backups before anything is replaced, merged `settings.json`, idempotent reruns, and a clean `--uninstall`.
 - **Committed output**: `kit sync` writes plain files into the project, so CI needs nothing installed.
-- **No runtime**: the kit itself needs only bash, git, and jq; no Node, Python, or package manager.
+- **Minimal dependencies**: the kit itself needs only bash, git, and jq; no Node, Python, or package manager.
 
 ## Install
 
@@ -113,7 +113,7 @@ Create `.agent-kit.json` at the project root, mapping each directory to its stac
 
 Then run `kit sync` in the project.
 It copies the stacks into `.agent-kit/stacks/`, writes each stack's rules into that directory's `AGENTS.md` between `agent-kit` markers (your own content outside the markers is kept), writes `docs/inventory/<stack>.md`, generates `scripts/verify.sh`, installs a pre-commit hook that runs `scripts/verify.sh fast`, and records the kit version.
-Commit the result: CI needs nothing else installed, and teammates run `kit sync` to get the pre-commit hook (and `install.sh` for the agent guardrails).
+Commit the result: CI needs nothing else installed, and teammates run `install.sh` (agent guardrails and the `kit` command), then `kit sync` (pre-commit hook).
 It prints the one line to add to your ESLint or Ruff config to extend the stack's preset.
 
 The file `.agent-kit.json` also turns on the global hooks for that project:
