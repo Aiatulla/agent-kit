@@ -11,6 +11,19 @@ The kit has three tiers:
 
 Dependencies: bash (3.2 or newer), git, jq. macOS and Linux.
 
+## How it differs
+
+Most agent kits are frameworks for building new agents.
+agent-kit is not: it configures the AI coding agents you already use, and keeps them honest.
+
+- **Tool-agnostic**: one source of rules, commands, and skills for Claude Code and Gemini CLI; a new tool is one adapter file.
+- **Guardrails that run, not just prompts**: hooks block edits to tests, snapshots, and fixtures, run `scripts/verify.sh` after edits and before the agent stops, and enforce a stop rule after 3 failed checks.
+- **Stack-aware**: per-directory stacks (`nextjs`, `fastapi`) bring their own rules, lint presets, and checks, so a monorepo gets the right rules in each folder.
+- **Spec-driven workflow**: `/spec`, `/plan`, `/implement`, and `/lesson` commands plus a reviewer agent that checks each diff against its spec and plan.
+- **Safe and reversible install**: symlinks into the clone, backups before anything is replaced, merged `settings.json`, idempotent reruns, and a clean `--uninstall`.
+- **Committed output**: `kit sync` writes plain files into the project, so teammates and CI need nothing installed.
+- **No runtime**: bash, git, and jq only; no Node, Python, or package manager.
+
 ## Install
 
 ```sh
