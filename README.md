@@ -7,6 +7,7 @@
 [![verify](https://github.com/Aiatulla/agent-kit/actions/workflows/verify.yml/badge.svg)](https://github.com/Aiatulla/agent-kit/actions/workflows/verify.yml)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-supported-d97757)
 ![Gemini CLI](https://img.shields.io/badge/Gemini_CLI-supported-4285f4)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 ![bash](https://img.shields.io/badge/deps-bash%20%C2%B7%20git%20%C2%B7%20jq-555)
 
 [How it works](#how-it-works) · [How it differs](#how-it-differs) · [Install](#install) · [Use it in a project](#use-it-in-a-project) · [Extend](#extend-the-kit)
@@ -138,3 +139,7 @@ Run `scripts/verify.sh full` before committing; `AGENTS.md` has the rules for wo
 ```
 
 This removes only links that point into the kit and the kit's hooks from `settings.json`, then restores your backed-up files.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
